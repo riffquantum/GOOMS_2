@@ -8,11 +8,12 @@ public class GameManagerScript : MonoBehaviour
 
 	public Introvert myIntrovert;
 	public Extrovert myExtrovert;
-
-	public List<GameObject> happyGuests = new List<GameObject>();
+    public UImanager myUImanager;
+    public List<GameObject> happyGuests = new List<GameObject>();
 	public List<GameObject> unHappyGuests = new List<GameObject>();
 
 	private WinConditions myWinConditions;
+    
 
 	//public GameObject youWin;
 	//public GameObject Next;
@@ -43,10 +44,10 @@ public class GameManagerScript : MonoBehaviour
 	void Update (){
 
 		if (unHappyGuests.Count == 0) {
-			Debug.Log ("YOU WIN");
+			//Debug.Log ("YOU WIN");
 
 			//Display YOU WIN text and next quit buttons
-			//youWin.SetActive (true);
+			myUImanager.youWin.SetActive (true);
 			//Next.SetActive (true);
 			//Quit1.SetActive (true);
 
