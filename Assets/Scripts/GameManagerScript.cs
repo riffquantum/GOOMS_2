@@ -14,10 +14,18 @@ public class GameManagerScript : MonoBehaviour
 
 	private WinConditions myWinConditions;
     
+	GameObject[] getAll;
+	Drag myDrag;
 
 	//public GameObject youWin;
 	//public GameObject Next;
 	//public GameObject Quit1;
+
+	void Start (){
+		//getAll = GameObject.FindGameObjectsWithTag("Character");
+
+
+	}
 
 
 	public void addToList(GameObject receivedEntity, bool isThisEntityHappy)
@@ -44,13 +52,18 @@ public class GameManagerScript : MonoBehaviour
 	void Update (){
 
 		if (unHappyGuests.Count == 0) {
-			//Debug.Log ("YOU WIN");
+			Debug.Log ("YOU WIN");
 
 			//Display YOU WIN text and next quit buttons
-			myUImanager.youWin.SetActive (true);
+			//myUImanager.youWin.SetActive (true);
 			//Next.SetActive (true);
 			//Quit1.SetActive (true);
 
+			if (getAll == null)
+				getAll = GameObject.FindGameObjectsWithTag ("Character");
+			foreach (GameObject entity in getAll) {
+				entity.GetComponent<Drag>().enabled = false;
+			}
 
 			//Disable Input Manager
 			//GameObject.Find("Main Camera").GetComponent<InputManager>().enabled = false;

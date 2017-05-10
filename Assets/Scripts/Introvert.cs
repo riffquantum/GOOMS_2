@@ -8,15 +8,20 @@ public class Introvert : MonoBehaviour {
     public GameManagerScript myGameManager;
 	public ColorManager myColorManager; 
 
+
     public int maxEntities;
     public int minEntities;
 
 	int currentMaxEntities;
 	int currentMinEntities;
 
+	Transform myRing;
+
 	public bool amIhappy;
 
 	void Start() {
+		myRing = gameObject.GetComponentInChildren<Transform> ();
+		Debug.Log (myRing);
 		currentMaxEntities = maxEntities;
 		currentMinEntities = minEntities;
 		happyChecker ();
@@ -47,13 +52,15 @@ public class Introvert : MonoBehaviour {
 	{
 		currentMaxEntities = maxEntities + 1;
 		currentMinEntities = minEntities - 1;
-        Debug.Log(maxEntities);
+		myRing.localScale = new Vector3 (1.5f, 1, 1.5f);
 
 	}
 
 	public void revertParams ()
 	{
 		currentMaxEntities = maxEntities - 1;
-		currentMinEntities = minEntities + 1;
+		currentMinEntities = maxEntities + 1;
+		myRing.localScale = new Vector3 (1, 1, 1);
+
 	}
 }
