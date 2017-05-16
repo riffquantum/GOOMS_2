@@ -1,7 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GOOMS_2", "Assembly-CSharp.csproj", "{742D7D3F-39CB-A480-CA37-0F146F5440EA}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GOOMS_2", "GOOMS_2.csproj", "{28B61B42-DA35-FAFD-858B-B9E5F3098FFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,15 +9,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{742D7D3F-39CB-A480-CA37-0F146F5440EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{742D7D3F-39CB-A480-CA37-0F146F5440EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{742D7D3F-39CB-A480-CA37-0F146F5440EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{742D7D3F-39CB-A480-CA37-0F146F5440EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28B61B42-DA35-FAFD-858B-B9E5F3098FFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28B61B42-DA35-FAFD-858B-B9E5F3098FFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28B61B42-DA35-FAFD-858B-B9E5F3098FFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28B61B42-DA35-FAFD-858B-B9E5F3098FFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal

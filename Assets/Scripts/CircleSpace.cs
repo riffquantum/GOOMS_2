@@ -5,7 +5,13 @@ using UnityEngine;
 public class CircleSpace : MonoBehaviour
 {
     public List<GameObject> entities = new List<GameObject>();
+    
 
+
+    void Start()
+    {
+        
+    }
     void OnTriggerEnter(Collider receivedEntity)
     {
 		if (receivedEntity.gameObject.tag == "Character")
@@ -18,7 +24,11 @@ public class CircleSpace : MonoBehaviour
 		}
 		if (receivedEntity.gameObject.tag == "Environment")
 		{
-            SendMessage ("changeParams");
+            SendMessage ("enterZoneParams");
+        }
+        if (receivedEntity.gameObject.tag == "Friend")
+        {
+            SendMessage("withFriendParams");
         }
     }
 
@@ -32,7 +42,12 @@ public class CircleSpace : MonoBehaviour
 		}
 		if (receivedEntity.gameObject.tag == "Environment")
 		{
-			SendMessage ("revertParams");
+			SendMessage ("leaveZoneParams");
 		}
+        if (receivedEntity.gameObject.tag == "Friend")
+        {
+            SendMessage("withoutFriendParams");
+        }
+
     }
 }

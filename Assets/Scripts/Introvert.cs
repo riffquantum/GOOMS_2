@@ -11,16 +11,17 @@ public class Introvert : MonoBehaviour {
 
     public int maxEntities;
     public int minEntities;
-
-	int currentMaxEntities;
+    public Vector3 normalRingScale;
+    public Vector3 zoneRingScale;
+    int currentMaxEntities;
 	int currentMinEntities;
 
-	Transform myRing;
+	Transform[] myRing;
 
 	public bool amIhappy;
 
 	void Start() {
-		myRing = gameObject.GetComponentInChildren<Transform> ();
+		myRing = gameObject.GetComponentsInChildren<Transform> ();
 		Debug.Log (myRing);
 		currentMaxEntities = maxEntities;
 		currentMinEntities = minEntities;
@@ -48,19 +49,39 @@ public class Introvert : MonoBehaviour {
 
     }
 
-	public void changeParams ()
+	public void enterZoneParams ()
 	{
-		currentMaxEntities = maxEntities + 1;
-		currentMinEntities = minEntities - 1;
-		myRing.localScale = new Vector3 (1.5f, 1, 1.5f);
+		currentMaxEntities = currentMaxEntities + 1;
+		currentMinEntities = currentMinEntities - 1;
+        foreach (Transform component in myRing)
+        {
+            if (component.gameObject.transform.parent != null)
+            {
+                component.gameObject.transform.localScale = zoneRingScale;
+            }
+        }
+        Debug.Log("zonemax" + maxEntities);
+        Debug.Log("zonecurr max" + currentMaxEntities);
+        Debug.Log("zonemin" + minEntities);
+        Debug.Log("zonecurr min" + currentMinEntities);
+        happyChecker();
+    }
 
-	}
-
-	public void revertParams ()
+	public void leaveZoneParams ()
 	{
-		currentMaxEntities = maxEntities - 1;
-		currentMinEntities = maxEntities + 1;
-		myRing.localScale = new Vector3 (1, 1, 1);
-
-	}
+		currentMaxEntities = currentMaxEntities - 1;
+		currentMinEntities = currentMinEntities + 1;
+        foreach (Transform component in myRing)
+        {
+            if (component.gameObject.transform.parent != null)
+            {
+                component.gameObject.transform.localScale = normalRingScale;
+            }
+        }
+        Debug.Log("zonemax" + maxEntities);
+        Debug.Log("zonecurr max" + currentMaxEntities);
+        Debug.Log("zonemin" + minEntities);
+        Debug.Log("zonecurr min" + currentMinEntities);
+        happyChecker();
+    }
 }
