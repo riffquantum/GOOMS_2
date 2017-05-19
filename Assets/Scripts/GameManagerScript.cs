@@ -24,7 +24,7 @@ public class GameManagerScript : MonoBehaviour
 
 	void Start (){
 		
-
+		///change 
 
 	}
 
