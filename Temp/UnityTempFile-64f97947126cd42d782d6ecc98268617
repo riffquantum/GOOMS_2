@@ -74,6 +74,7 @@
 'Assets/Scripts/GameManagerScript.cs'
 'Assets/Scripts/GameTimer.cs'
 'Assets/Scripts/Introvert.cs'
+'Assets/Scripts/StartGame.cs'
 'Assets/Scripts/UImanager.cs'
 'Assets/Scripts/WinConditions.cs'
 'Assets/Scripts/snaptogrid.cs'

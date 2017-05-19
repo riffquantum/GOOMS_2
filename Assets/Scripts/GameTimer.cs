@@ -30,7 +30,7 @@ public class GameTimer : MonoBehaviour {
 	void Update () {
 		if (timerIsRunning) {
 			myTimer -= Time.deltaTime;
-			timer.text = myTimer.ToString ("0");
+			timer.text = myTimer.ToString ("TIME: " + "0");
 			//print (myTimer);
 			if (youWin.activeSelf == true) {
 				timerIsRunning = false;
