@@ -6,14 +6,15 @@ using System;
 public class GameManagerScript : MonoBehaviour
 {
 
-	public Introvert myIntrovert;
-	public Extrovert myExtrovert;
+
     public UImanager myUImanager;
+	public GameObject youWin;
     public List<GameObject> happyGuests = new List<GameObject>();
 	public List<GameObject> unHappyGuests = new List<GameObject>();
 
 	private WinConditions myWinConditions;
-    
+	public int time;
+
 	GameObject[] getAll;
 	Drag myDrag;
     CircleSpace myCircleSpace;
@@ -53,6 +54,7 @@ public class GameManagerScript : MonoBehaviour
 
 		if (unHappyGuests.Count == 0) {
 			Debug.Log ("YOU WIN");
+			youWin.SetActive (true);
 
 			//Display YOU WIN text and next quit buttons
 			//myUImanager.youWin.SetActive (true);
@@ -62,9 +64,16 @@ public class GameManagerScript : MonoBehaviour
 			if (getAll == null)
 				getAll = GameObject.FindGameObjectsWithTag ("Character");
 			foreach (GameObject entity in getAll) {
-				entity.GetComponent<Drag>().enabled = false;
+				entity.GetComponent<Drag>().canIMoveIfIAmDraggedBecauseTheGameHasNotYetEnded = false;
 			}
 
+			//Communicate with UI Manager script and load "You Win!"
+			//myUImanager.youWin ();
+
+
+			//if (time = 0){
+				//myUImanager.youLose ();
+			//}
 		}
 
 	}

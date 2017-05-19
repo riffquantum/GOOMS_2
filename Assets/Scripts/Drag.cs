@@ -9,7 +9,8 @@ public class Drag : MonoBehaviour {
 	public LayerMask backgroundLayerMask;
 	public float dragFollowSpeed;
 
-	Rigidbody myRigidbody;
+	public Rigidbody myRigidbody;
+	public bool canIMoveIfIAmDraggedBecauseTheGameHasNotYetEnded = true;
 
 	void Start() {
 		myRigidbody = GetComponent<Rigidbody> ();
@@ -23,17 +24,19 @@ public class Drag : MonoBehaviour {
 
 	void OnMouseDrag()
 	{
-		Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
-		Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
+		if (canIMoveIfIAmDraggedBecauseTheGameHasNotYetEnded) {
+			Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
+			Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
 
-		RaycastHit raycastHit;
-		Physics.Raycast(transform.position, (curPosition - new Vector3(transform.position.x, transform.position.y, transform.position.z)).normalized, out raycastHit, (curPosition - new Vector3(transform.position.x, transform.position.y, transform.position.z)).magnitude, backgroundLayerMask);
-		Vector3 destination = curPosition;
-		if (raycastHit.collider != null) {
-			destination = raycastHit.point;
-			Debug.Log (raycastHit.collider.gameObject);
+			RaycastHit raycastHit;
+			Physics.Raycast(transform.position, (curPosition - transform.position).normalized, out raycastHit, (curPosition - transform.position).magnitude, backgroundLayerMask);
+			Vector3 destination = curPosition;
+			if (raycastHit.collider != null) {
+				destination = raycastHit.point;
+				Debug.Log (raycastHit.collider.gameObject);
+			}
+			myRigidbody.MovePosition(Vector3.Lerp(transform.position, destination, Time.deltaTime * dragFollowSpeed));
 		}
-		myRigidbody.MovePosition(Vector3.Lerp(transform.position, destination, Time.deltaTime * dragFollowSpeed));
 
 		//draggedObject.transform.position = inputPosition;// + touchOffset;
 		//transform.position = curPosition;
