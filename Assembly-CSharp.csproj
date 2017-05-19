@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\GameManagerScript.cs" />
      <Compile Include="Assets\Scripts\GameTimer.cs" />
      <Compile Include="Assets\Scripts\Introvert.cs" />
+     <Compile Include="Assets\Scripts\StartGame.cs" />
      <Compile Include="Assets\Scripts\UImanager.cs" />
      <Compile Include="Assets\Scripts\WinConditions.cs" />
      <Compile Include="Assets\Scripts\snaptogrid.cs" />
