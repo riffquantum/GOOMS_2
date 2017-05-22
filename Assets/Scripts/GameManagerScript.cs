@@ -9,6 +9,7 @@ public class GameManagerScript : MonoBehaviour
 
     public UImanager myUImanager;
 	public GameObject youWin;
+	public GameObject nextButton;
     public List<GameObject> happyGuests = new List<GameObject>();
 	public List<GameObject> unHappyGuests = new List<GameObject>();
 
@@ -55,6 +56,8 @@ public class GameManagerScript : MonoBehaviour
 		if (unHappyGuests.Count == 0) {
 			Debug.Log ("YOU WIN");
 			youWin.SetActive (true);
+			nextButton.SetActive (true);
+
 
 			//Display YOU WIN text and next quit buttons
 			//myUImanager.youWin.SetActive (true);
