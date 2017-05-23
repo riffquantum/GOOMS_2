@@ -36,14 +36,14 @@ public class Friend : MonoBehaviour {
 		//myGameManager.happyGuests.Clear ();
 		//myGameManager.unHappyGuests.Clear ();
 
-		if (myCircleSpace.entities.Count > currentMaxEntities || myCircleSpace.entities.Count < currentMinEntities)
+		if (!withFriend/*myCircleSpace.entities.Count > currentMaxEntities || myCircleSpace.entities.Count < currentMinEntities*/)
 		{
 
 			amIhappy = false;
 			myColorManager.UnhappyAnimation (); //unHappy
 			myGameManager.addToList(gameObject, amIhappy);
 		}
-		else if (myCircleSpace.entities.Count <= currentMaxEntities && myCircleSpace.entities.Count >= currentMinEntities)
+		else if (withFriend/*myCircleSpace.entities.Count <= currentMaxEntities && myCircleSpace.entities.Count >= currentMinEntities*/)
 		{
 
 			amIhappy = true;

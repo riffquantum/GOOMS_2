@@ -32,7 +32,7 @@ public class CircleSpace : MonoBehaviour
 		{
             SendMessage ("enterZoneParams");
         }
-        if (receivedEntity.gameObject.tag == "Friend")
+		if (GetComponent<Friend>() && receivedEntity.gameObject.name.Contains("Friend"))
         {
             SendMessage("withFriendParams");
         }
@@ -51,7 +51,7 @@ public class CircleSpace : MonoBehaviour
 			SendMessage ("leaveZoneParams");
 		}
         
-		if (receivedEntity.gameObject.name.Contains("Friend"))
+		if (GetComponent<Friend>() && receivedEntity.gameObject.name.Contains("Friend"))
         {
             SendMessage("withoutFriendParams");
         }
