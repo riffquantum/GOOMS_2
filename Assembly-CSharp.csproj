@@ -58,6 +58,8 @@
      <Compile Include="Assets\Scripts\LoadFriends.cs" />
      <Compile Include="Assets\Scripts\LoadIntrovert.cs" />
      <Compile Include="Assets\Scripts\LoadLevel2.cs" />
+     <Compile Include="Assets\Scripts\QuitGame.cs" />
+     <Compile Include="Assets\Scripts\ReloadLevel.cs" />
      <Compile Include="Assets\Scripts\StartGame.cs" />
      <Compile Include="Assets\Scripts\UImanager.cs" />
      <Compile Include="Assets\Scripts\WinConditions.cs" />

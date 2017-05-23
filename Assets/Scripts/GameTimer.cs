@@ -11,7 +11,7 @@ public class GameTimer : MonoBehaviour {
 	public GameObject timesUp;
 	public GameObject playAgain;
 	public GameObject Quit;
-	public GameObject youWin; 
+	public GameObject cozyWin; 
 
 
 
@@ -32,7 +32,7 @@ public class GameTimer : MonoBehaviour {
 			myTimer -= Time.deltaTime;
 			timer.text = myTimer.ToString ("TIME: " + "0");
 			//print (myTimer);
-			if (youWin.activeSelf == true) {
+			if (cozyWin.activeSelf == true) {
 				timerIsRunning = false;
 			}
 			if (myTimer <= 0) {

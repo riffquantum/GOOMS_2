@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UImanager : MonoBehaviour {
 
-    public GameObject youWin;
+    //public GameObject youWin;
     GameManagerScript myGameManager;
 	
 	// Update is called once per frame
