@@ -11,10 +11,17 @@ public class Introvert : MonoBehaviour {
 
     public int maxEntities;
     public int minEntities;
+	public int barMaxEntities;
     public Vector3 normalRingScale;
     public Vector3 zoneRingScale;
+	public Vector3 zone2RingScale;
+
     int currentMaxEntities;
 	int currentMinEntities;
+
+	public string whereAmI;
+
+
 
 	Transform[] myRing;
 
@@ -22,7 +29,6 @@ public class Introvert : MonoBehaviour {
 
 	void Start() {
 		myRing = gameObject.GetComponentsInChildren<Transform> ();
-		Debug.Log (myRing);
 		currentMaxEntities = maxEntities;
 		currentMinEntities = minEntities;
 		happyChecker ();
@@ -45,14 +51,16 @@ public class Introvert : MonoBehaviour {
 			myColorManager.HappyAnimation (); //happy
 			myGameManager.addToList(gameObject, amIhappy);
 		}
-
-
     }
 
-	public void enterZoneParams ()
+
+	//ZONE 1 PARAMS
+	public void enterDancefloorParams ()
 	{
-		currentMaxEntities = currentMaxEntities + 1;
-		currentMinEntities = currentMinEntities - 1;
+		whereAmI = "Dancefloor";
+		currentMinEntities = currentMinEntities + 30;
+		happyChecker ();
+
         foreach (Transform component in myRing)
         {
             if (component.gameObject.transform.parent != null)
@@ -60,17 +68,15 @@ public class Introvert : MonoBehaviour {
                 component.gameObject.transform.localScale = zoneRingScale;
             }
         }
-        Debug.Log("zonemax" + maxEntities);
-        Debug.Log("zonecurr max" + currentMaxEntities);
-        Debug.Log("zonemin" + minEntities);
-        Debug.Log("zonecurr min" + currentMinEntities);
+		Debug.Log ("Introvert Entered Dancefloor");
         happyChecker();
     }
 
-	public void leaveZoneParams ()
+	public void leaveDancefloorParams ()
 	{
-		currentMaxEntities = currentMaxEntities - 1;
-		currentMinEntities = currentMinEntities + 1;
+		whereAmI = "Neutral";
+		currentMinEntities = minEntities;
+
         foreach (Transform component in myRing)
         {
             if (component.gameObject.transform.parent != null)
@@ -78,10 +84,39 @@ public class Introvert : MonoBehaviour {
                 component.gameObject.transform.localScale = normalRingScale;
             }
         }
-        Debug.Log("zonemax" + maxEntities);
-        Debug.Log("zonecurr max" + currentMaxEntities);
-        Debug.Log("zonemin" + minEntities);
-        Debug.Log("zonecurr min" + currentMinEntities);
-        happyChecker();
+		Debug.Log ("Introvert left Dancefloor");
+		happyChecker ();
     }
+
+	//ZONE 2 PARAMS
+	public void enterBarParams ()
+	{
+		whereAmI = "Bar";
+		currentMaxEntities = barMaxEntities;
+		foreach (Transform component in myRing)
+		{
+			if (component.gameObject.transform.parent != null)
+			{
+				component.gameObject.transform.localScale = zone2RingScale;
+			}
+		}
+		Debug.Log ("Introvert Entered Bar");
+		happyChecker();
+	}
+
+	public void leaveBarParams ()
+	{
+		whereAmI = "Neutral";
+		currentMaxEntities = maxEntities;
+
+		foreach (Transform component in myRing)
+		{
+			if (component.gameObject.transform.parent != null)
+			{
+				component.gameObject.transform.localScale = normalRingScale;
+			}
+		}
+		Debug.Log ("Introvert left Bar");
+		happyChecker();
+	}
 }

@@ -17,9 +17,11 @@ public class Friend : MonoBehaviour {
 	int currentMinEntities;
     public Vector3 normalRingScale;
     public Vector3 zoneRingScale;
+	public Vector3 zone2RingScale;
 
     public bool amIhappy;
     public bool withFriend;
+	public GameObject thisIsMyFriendWhoILoveAndCameToThisPartyTogetherWithCauseWeAreBestFriends;
 
     Transform[] myRing;
 
@@ -54,41 +56,7 @@ public class Friend : MonoBehaviour {
 		//Debug.Log (amIhappy);
 	}
 
-    public void enterZoneParams()
-    {
-        currentMaxEntities = currentMaxEntities + 1;
-        currentMinEntities = currentMinEntities - 1;
-        foreach (Transform component in myRing)
-        {
-            if (component.gameObject.transform.parent != null)
-            {
-                component.gameObject.transform.localScale = zoneRingScale;
-            }
-        }
-        Debug.Log("zonemax" + maxEntities);
-        Debug.Log("zonecurr max" + currentMaxEntities);
-        Debug.Log("zonemin" + minEntities);
-        Debug.Log("zonecurr min" + currentMinEntities);    
-        happyChecker();
-    }
 
-    public void leaveZoneParams()
-    {
-        currentMaxEntities = currentMaxEntities - 1;
-        currentMinEntities = currentMinEntities + 1;
-        foreach (Transform component in myRing)
-        {
-            if (component.gameObject.transform.parent != null)
-            {
-                component.gameObject.transform.localScale = normalRingScale;
-            }
-        }
-        Debug.Log("zonemax" + maxEntities);
-        Debug.Log("zonecurr max" + currentMaxEntities);
-        Debug.Log("zonemin" + minEntities);
-        Debug.Log("zonecurr min" + currentMinEntities);
-        happyChecker();
-    }
 
     public void withFriendParams()
     {
@@ -113,7 +81,7 @@ public class Friend : MonoBehaviour {
         Debug.Log("friendcurr max" + currentMaxEntities);
         Debug.Log("friendmin" + minEntities);
         Debug.Log("friendcurr min" + currentMinEntities);
-        withFriend = true;
+        withFriend = false;
         happyChecker();
     }
 }

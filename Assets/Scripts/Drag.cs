@@ -32,8 +32,7 @@ public class Drag : MonoBehaviour {
 			Physics.Raycast(transform.position, (curPosition - transform.position).normalized, out raycastHit, (curPosition - transform.position).magnitude, backgroundLayerMask);
 			Vector3 destination = curPosition;
 			if (raycastHit.collider != null) {
-				destination = raycastHit.point;
-				Debug.Log (raycastHit.collider.gameObject);
+				destination = raycastHit.point;	
 			}
 			myRigidbody.MovePosition(Vector3.Lerp(transform.position, destination, Time.deltaTime * dragFollowSpeed));
 		}

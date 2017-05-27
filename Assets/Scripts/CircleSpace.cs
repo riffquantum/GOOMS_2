@@ -20,7 +20,6 @@ public class CircleSpace : MonoBehaviour
 			Physics.Raycast(transform.position, (receivedEntity.transform.position - transform.position).normalized, out raycastHit, (receivedEntity.transform.position - transform.position).magnitude, myDrag.backgroundLayerMask);
 
 			if (raycastHit.collider != null) {
-				Debug.Log ("Something is between us");
 			} else {
 				if (!entities.Contains(receivedEntity.gameObject)) {
 					entities.Add(receivedEntity.gameObject);
@@ -28,11 +27,16 @@ public class CircleSpace : MonoBehaviour
 				}
 			}
 		}
-		if (receivedEntity.gameObject.tag == "Environment")
+		if (receivedEntity.gameObject.tag == "Dancefloor")
 		{
-            SendMessage ("enterZoneParams");
+			SendMessage ("enterDancefloorParams");
         }
-		if (GetComponent<Friend>() && receivedEntity.gameObject.name.Contains("Friend"))
+		if (receivedEntity.gameObject.tag == "Bar")
+		{
+			SendMessage ("enterBarParams");
+		}
+
+		if (GetComponent<Friend>() && receivedEntity.gameObject.name.Contains("Friend") && receivedEntity.gameObject == GetComponent<Friend>().thisIsMyFriendWhoILoveAndCameToThisPartyTogetherWithCauseWeAreBestFriends)
         {
             SendMessage("withFriendParams");
         }
@@ -46,12 +50,17 @@ public class CircleSpace : MonoBehaviour
 				SendMessage ("happyChecker");
 			}
 		}
-		if (receivedEntity.gameObject.tag == "Environment")
+		if (receivedEntity.gameObject.tag == "Dancefloor")
 		{
-			SendMessage ("leaveZoneParams");
+			SendMessage ("leaveDancefloorParams");
+		}
+
+		if (receivedEntity.gameObject.tag == "Bar")
+		{
+			SendMessage ("leaveBarParams");
 		}
         
-		if (GetComponent<Friend>() && receivedEntity.gameObject.name.Contains("Friend"))
+		if (GetComponent<Friend>() && receivedEntity.gameObject.name.Contains("Friend") && receivedEntity.gameObject == GetComponent<Friend>().thisIsMyFriendWhoILoveAndCameToThisPartyTogetherWithCauseWeAreBestFriends)
         {
             SendMessage("withoutFriendParams");
         }
