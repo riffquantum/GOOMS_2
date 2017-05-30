@@ -70,12 +70,7 @@ public class Extrovert : MonoBehaviour {
                 component.gameObject.transform.localScale = zoneRingScale ;
             }
         }
-        /*
-         * Debug.Log("max" + maxEntities);
-        Debug.Log("curr max" + currentMaxEntities);
-        Debug.Log("min" + minEntities);
-        Debug.Log("curr min" + currentMinEntities);
-        */
+		Debug.Log ("Extrovert Entered Dancefloor");
         happyChecker();
     }
 
@@ -93,6 +88,8 @@ public class Extrovert : MonoBehaviour {
             }
         }
         
+		Debug.Log ("Extrovert Exited Dancefloor");
+		happyChecker ();
 
     }
 
@@ -100,7 +97,6 @@ public class Extrovert : MonoBehaviour {
 	public void enterBarParams ()
 	{
 		whereAmI = "Bar";
-
 		currentMinEntities = currentMinEntities + 1;
 		foreach (Transform component in myRing)
 		{
@@ -109,14 +105,13 @@ public class Extrovert : MonoBehaviour {
 				component.gameObject.transform.localScale = zone2RingScale;
 			}
 		}
-
+		Debug.Log ("Extrovert Entered Bar");
 		happyChecker();
 	}
 
 	public void leaveBarParams ()
 	{
 		whereAmI = "Neutral";
-
 		currentMinEntities = minEntities;
 		foreach (Transform component in myRing)
 		{
@@ -125,7 +120,7 @@ public class Extrovert : MonoBehaviour {
 				component.gameObject.transform.localScale = normalRingScale;
 			}
 		}
-
+		Debug.Log ("Extrovert Left Bar");
 		happyChecker();
 	}
 
